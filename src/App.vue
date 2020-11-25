@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Bar />
+    <Body />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent, onMounted, provide, ref } from "@vue/composition-api";
+import "./assets/style.css";
+import Bar from "./components/Bar.vue";
+import Body from "./components/Body.vue";
 
-export default {
-  name: 'app',
+export default defineComponent({
   components: {
-    HelloWorld
-  }
-}
+    Bar,
+    Body,
+  },
+  setup() {
+    provide("source", ref("auto"));
+    onMounted(() => {
+      $(document).ready(function () {
+        $("body").pagepiling({
+          // onLeave: function (index, nextIndex, direction) {
+          // },
+        });
+      });
+      $(".menu .item").tab();
+      $(".dropdown").dropdown();
+    });
+  },
+});
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+/* #app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 </style>
