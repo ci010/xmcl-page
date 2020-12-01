@@ -46,7 +46,7 @@ export default defineComponent({
   },
   setup() {
     const { latest, latestVersion } = useGithubInfo();
-    provideArtifacts(latest);
+    provideArtifacts(latestVersion, latest);
     return {
       platform: usePlatform(),
       latestVersion

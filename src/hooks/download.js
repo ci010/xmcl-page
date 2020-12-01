@@ -6,27 +6,28 @@ export function useDownloadSource() {
 }
 
 /**
+ * @param {import('@vue/composition-api').Ref<string>} version
  * @param {import('@vue/composition-api').Ref<{ assets?: { name: string; browser_download_url: string }[] }>} release 
  */
-export function provideArtifacts(release) {
+export function provideArtifacts(version, release) {
     const { inGFW } = useGFW();
     const { source } = useDownloadSource();
     // function getGithubUrl(name) { return `https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${version}/${name}`; }
     function getAzureUrl(name) { return `https://xmcl-release.azureedge.net/releases/${name}`; }
     function getAzureMsUrl(name) { return `https://xmcl-release-ms.azureedge.net/releases/${name}`; }
-    function getBaiduUrl(version, name) { return `http://maven.jihuayu.site/assets-xmcl/v${version}/${name}`; }
+    function getBaiduUrl(name) { return `http://maven.jihuayu.site/assets-xmcl/${version.value}/${name}`; }
     function getUrl(find) {
         if (!release.value) return ''
         const result = release.value.assets.find(find)
         if (result) {
             if (source.value === 'auto') {
-                return inGFW.value ? getBaiduUrl(result.tag_name, result.name) : result.browser_download_url
+                return inGFW.value ? getBaiduUrl(result.name) : result.browser_download_url
             } else if (source.value === 'azure') {
                 return getAzureUrl(result.name)
             } else if (source.value === 'azure-ms') {
                 return getAzureMsUrl(result.name)
             } else if (source.value === 'baidu') {
-                return getBaiduUrl(result.tag_name, result.name);
+                return getBaiduUrl(result.name);
             }
             return result.browser_download_url
         }
