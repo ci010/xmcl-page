@@ -1,12 +1,12 @@
 import { ref, onMounted, provide, inject } from '@vue/composition-api';
 
 
-/**
- * @param {string[]} urls 
- */
-function speedTest(urls) {
-    return Promise.race(urls.map((u) => fetch({ url: u, method: 'HEAD', redirect: 'follow' }).then(() => u)))
-}
+// /**
+//  * @param {string[]} urls 
+//  */
+// function speedTest(urls) {
+//     return Promise.race(urls.map((u) => fetch({ url: u, method: 'HEAD', redirect: 'follow' }).then(() => u)))
+// }
 
 export function provideGFW() {
     const inGFW = ref(false);
