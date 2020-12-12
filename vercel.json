@@ -2,7 +2,8 @@
     "routes": [
         {
             "src": "/.well-known/microsoft-identity-association.json",
-            "dest": "/microsoft-identity-association.json"
+            "dest": "/microsoft-identity-association.json",
+            "headers": { "Content-Type": "application/json" }
         }
     ]
 }
