@@ -75,7 +75,7 @@ export default defineComponent({
     };
     const onDragStart = e => {
       e.dataTransfer.effectAllowed = "copyLink";
-      e.dataTransfer.setData("text/html", callbackUrl.value);
+      e.dataTransfer.setData("xmcl/url", callbackUrl.value);
     };
     onMounted(() => {
       window.location.assign(callbackUrl.value);
