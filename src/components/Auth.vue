@@ -17,7 +17,7 @@
         </div>
       </h1>
       <div class="ui horizontal inverted divider" style="margin-bottom: 40px;">
-        {{ $t('notWork') }}
+        {{ $t("notWork") }}
       </div>
       <div class="message-container">
         <div class="ui icon positive large message">
@@ -53,7 +53,7 @@
 
 <script>
 import logo from "../assets/logo.png";
-import { computed, defineComponent } from "@vue/composition-api";
+import { computed, defineComponent, onMounted } from "@vue/composition-api";
 import { usePlatform } from "../hooks";
 import Win32 from "./Win32.vue";
 import Mac from "./Mac.vue";
@@ -74,9 +74,12 @@ export default defineComponent({
       window.location.assign(callbackUrl.value);
     };
     const onDragStart = e => {
-      e.dataTransfer.effectAllowed = 'copyLink'
+      e.dataTransfer.effectAllowed = "copyLink";
       e.dataTransfer.setData("text/html", callbackUrl.value);
     };
+    onMounted(() => {
+      window.location.assign(callbackUrl.value);
+    });
     return {
       platform: usePlatform(),
       logo,
