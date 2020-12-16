@@ -33,7 +33,7 @@
 
 <script>
 import { defineComponent } from "@vue/composition-api";
-import { provideArtifacts, useGithubInfo, usePlatform } from "../hooks";
+import { useGithubInfo, usePlatform } from "../hooks";
 import Win32 from "./Win32.vue";
 import Mac from "./Mac.vue";
 import Linux from "./Linux.vue";
@@ -45,8 +45,7 @@ export default defineComponent({
     Linux
   },
   setup() {
-    const { latest, latestVersion } = useGithubInfo();
-    provideArtifacts(latestVersion, latest);
+    const { latestVersion } = useGithubInfo();
     return {
       platform: usePlatform(),
       latestVersion

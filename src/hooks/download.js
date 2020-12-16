@@ -60,7 +60,7 @@ export function useArtifacts() {
     return inject('artifacts')
 }
 
-export function useGithubInfo() {
+export function provideGithubInfo() {
     const releases = ref([])
     const latest = computed(() => releases.value[0])
     const latestVersion = computed(() => latest.value ? latest.value.tag_name : 'unknown')
@@ -70,11 +70,17 @@ export function useGithubInfo() {
         .then(resp => resp.json())
         .then(r => releases.value = r);
 
-    return {
+    const github = {
         latest,
         latestVersion,
         prerelease,
     }
+    provide('github', github)
+    return github
+}
+
+export function useGithubInfo() {
+    return inject('github')
 }
 
 // function setupHrefByUrl(elem, azureUrl, githubUrl) {

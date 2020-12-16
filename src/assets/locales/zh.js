@@ -28,5 +28,12 @@ export default {
     'github-source': '从 Github 下载',
     'auto-source': '根据网络决定下载源',
 
-    prerelease: "预发布版"
+    prerelease: "预发布版",
+    authSuccess: '验证成功',
+    authSuccessTitle: '验证成功。你将跳转回启动器界面完成登录！',
+    redirectHelperTitle: '如果你没有被自动跳转，你可以尝试点击下面的按钮来手动跳转',
+    redirectHelperMessage: '浏览器会弹出窗口询问是否打开启动器，请选择允许。如果没有弹窗，可以尝试将这个按钮拖入启动器界面的中！',
+    notWork: '无法跳转?',
+    openInAppButton: '在启动器中打开',
+    nothingWork: '如果上述方法都不顶用，请你尝试重新下载安装最新的启动器吧',
 }

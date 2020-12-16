@@ -29,5 +29,12 @@ export default {
     'github-source': 'Download From Github',
     'auto-source': 'Auto Detect The Download Source',
 
-    prerelease: "Prerelease"
+    prerelease: "Prerelease",
+    authSuccess: 'Successed!',
+    authSuccessTitle: 'Authorization was successful. You will be redirected back to Minecraft Launcher!',
+    redirectHelperTitle: 'If you aren\'t redirected, you can try to click "Open In App" button to manually redirect.',
+    redirectHelperMessage: 'It will create popup and ask you to open the launcher. If that don\'t work either, you can try to drag the button to launcher window!',
+    notWork: 'Don\'t Work?',
+    openInAppButton: 'Open In Launcher',
+    nothingWork: 'If none of above works, you might want to re-download the latest Launcher',
 }
